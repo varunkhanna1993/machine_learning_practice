@@ -1,19 +1,35 @@
-"""Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+"""Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]
+ such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
 
 Notice that the solution set must not contain duplicate triplets."""
 
+
+
+
 class Solution:
     def threeSum(self, nums):
-        triplets = []
-        for object_i in range(len(nums)):
-            for object_j in range(len(nums)):
-                for object_k in range(len(nums)):
-                    if object_i != object_j and object_j != object_k and object_i != object_k and ((nums[object_i]+ nums[object_j] + nums[object_k] ) == 0):
-                        triplets.append([object_i, object_j, object_k])
-        triplets = set([tuple(i) for i in triplets])
+        # for the result
+        res = []
+        # sort the input array 
+        nums.sort()
+        for index, value in enumerate(nums):
+            if value > 0 and value == nums[index -1]:
+                continue
+            if index == 0 or nums[index - 1] != nums[index]:
+                l,r = index+1, len(nums)-1
+                while l < r:
+                    threeSum = nums[l] +nums[r]+nums[index]
+                    if threeSum > 0:
+                        r-=1
+                    elif threeSum < 0:
+                        l+=1
+                    else:
+                        res.append([nums[index], nums[l], nums[r]])
+                        l+= 1
+                        while nums[l] == nums[l-1] and l<r:
+                            l+=1
+        return res
 
-
-        return list(triplets)
 
 
 if __name__ == '__main__':
