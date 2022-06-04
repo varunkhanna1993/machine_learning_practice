@@ -26,7 +26,7 @@ class Solution:
                         while j+1 < len(nums) and nums[j] == nums[j+1]:
                             j+=1
                     seen.add(nums[j])
-                    print(seen)
+                    # print(seen)
                     j+=1
         return res
     def threeSum(self, nums):
