@@ -7,6 +7,28 @@ Notice that the solution set must not contain duplicate triplets."""
 
 
 class Solution:
+    def threeSum_solution_two(self, nums):
+        # for the result
+        res = []
+        # sort the input array 
+        nums.sort()
+        #    e.g. nums = [-4,-1,-1,0,1,2]
+        for index, value in enumerate(nums):
+            if value > 0 and value == nums[index -1]:
+                continue
+            if index == 0 or nums[index - 1] != nums[index]:
+                seen = set()
+                j = index + 1
+                while j < len(nums):
+                    complement = -(nums[index] +nums[j])
+                    if complement in seen:
+                        res.append([nums[index], nums[j], complement])
+                        while j+1 < len(nums) and nums[j] == nums[j+1]:
+                            j+=1
+                    seen.add(nums[j])
+                    print(seen)
+                    j+=1
+        return res
     def threeSum(self, nums):
         # for the result
         res = []
@@ -34,5 +56,5 @@ class Solution:
 
 if __name__ == '__main__':
     a = Solution()
-    nums = [-1,0,1,2,-1,-4]
-    print(a.threeSum(nums))
+    nums = [-4,-1,-1,0,1,2]
+    print(a.threeSum_solution_two(nums))
