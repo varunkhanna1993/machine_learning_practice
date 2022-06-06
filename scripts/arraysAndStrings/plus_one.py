@@ -27,5 +27,3 @@ class Solution:
 
 my_nums  =[9,9,9,9,9]
 print(Solution().plusOne_solution_two(digits= my_nums))
-
-# print(my_nums[0])
