@@ -15,11 +15,11 @@ class Solution:
                 my_list.append(values)
             
         return my_list
-test_a = ["a","a","b","b","c","c","c"]
+test_a = ["a","a","b","b","c","c","c", "a", "a"]
 test_b = ["a"]
 chars = ["a","a","a","a","a","b","b","b","b","b","b","b","b","b","b","b","b"]
 
-print(Solution().compress(chars = chars))
+print(Solution().compress(chars = test_a))
 
 
 # print([a for a in str(1345)])
